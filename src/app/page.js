@@ -167,9 +167,20 @@ export default function Home() {
             controls
             playsInline
             preload="metadata"
+            crossOrigin="anonymous"
             className="w-full h-full object-contain"
-            volume={0.2}
-          />
+          >
+            {currentEpisode?.subtitleUrl && (
+              <track
+                key={currentEpisode.subtitleUrl}
+                kind="subtitles"
+                src={currentEpisode.subtitleUrl}
+                srcLang="en"
+                label="English"
+                default
+              />
+            )}
+          </video>
         </div>
         <div className="w-[40%] relative lg:block hidden">
           <FreeSpace />
